@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+<title>Search Page</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <h1 style="text-align: center">Predict Diabetes</h1>
+
+    <div class="form">
+        <p><b>Predict Single Case of Diabetes</b></p>
+        <form action="/predict_single" method="POST">
+            <input type="float" name="Pregnancies" id="Pregnancies" placeholder="Pregnancies">
+            <input type="float" name="Glucose" id="Glucose" placeholder="Glucose">
+            <input type="float" name="BloodPressure" id="BloodPressure" placeholder="BloodPressure">
+            <input type="float" name="SkinThickness" id="SkinThickness" placeholder="SkinThickness">
+            <input type="float" name="Insulin" id="Insulin" placeholder="Insulin">
+            <input type="float" name="BMI" id="BMI" placeholder="BMI">
+            <input type="float" name="DiabetesPedigreeFunction" id="DiabetesPedigreeFunction" placeholder="DiabetesPedigreeFunction">
+            <input type="float" name="Age" id="Age" placeholder="Age">
+            <input type="submit" value="Predict">
+        </form>
+    </div>
+
+    <div class="form">
+        <p><b>Predict Batch Cases</b></p>
+        <form action="/predict_batch" method="POST" enctype="multipart/form-data">
+            <input type="file" name="file" id="batch_predict" placeholder="batch_predict">
+            <input type="submit" value="Batch Predict">
+        </form>
+    </div>
+
+</div>
+{% endblock %}
